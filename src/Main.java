@@ -1,6 +1,8 @@
+import Creational.AbstractFactory.EmailNotification;
+import Creational.AbstractFactory.GoogleNotificatonFactory;
+import Creational.AbstractFactory.NotificationFactory;
 import Creational.Builder.User;
 import Creational.FactoryMethod.Notification;
-import Creational.FactoryMethod.NotificationFactory;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,12 +23,17 @@ public class Main {
 //        t2.start();
 
         //Factory
-            Notification noti1= NotificationFactory.createNotification("email");
-            noti1.notifyUser();
-            Notification noti2= NotificationFactory.createNotification("SMS");
-            noti2.notifyUser();
+//            Notification noti1= NotificationFactory.createNotification("email");
+//            noti1.notifyUser();
+//            Notification noti2= NotificationFactory.createNotification("SMS");
+//            noti2.notifyUser();
 //        Notification noti3=NotificationFactory.createNotification("dfgsyfhyef");
 //        noti3.notifyUser();
+
+        //Abstract Factory
+        NotificationFactory googleFact=new GoogleNotificatonFactory();
+        EmailNotification googleEmail=googleFact.createEmail();
+        googleEmail.sendEmail();
 
 
         //Creational.Builder
