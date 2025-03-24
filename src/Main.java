@@ -3,17 +3,21 @@ import Creational.AbstractFactory.GoogleNotificatonFactory;
 import Creational.AbstractFactory.NotificationFactory;
 import Creational.Builder.User;
 import Creational.FactoryMethod.Notification;
+import Creational.Singleton.SingletonDouble;
+import Creational.Singleton.SingletonEager;
+import Creational.Singleton.SingletonLazy;
+import Creational.Singleton.SingletonSync;
 
 public class Main {
     public static void main(String[] args) {
 
-//        SingletonLazy obj1= SingletonLazy.getInstance();
-//        SingletonLazy obj2= SingletonLazy.getInstance();
-//        System.out.println(obj1==obj2);
+        SingletonDouble obj1= SingletonDouble.getInstance();
+        SingletonDouble obj2= SingletonDouble.getInstance();
+        System.out.println(obj1==obj2);
 
-//        To test: Thread-safe or not?
+        //To test: Thread-safe or not?
 //        Runnable task=()->{
-//            SingletonSync obj=SingletonSync.getInstance();
+//            SingletonSync obj= SingletonSync.getInstance();
 //        };
 //
 //        Thread t1=new Thread(task);
@@ -31,12 +35,12 @@ public class Main {
 //        noti3.notifyUser();
 
         //Abstract Factory
-        NotificationFactory googleFact=new GoogleNotificatonFactory();
-        EmailNotification googleEmail=googleFact.createEmail();
-        googleEmail.sendEmail();
+//        NotificationFactory googleFact=new GoogleNotificatonFactory();
+//        EmailNotification googleEmail=googleFact.createEmail();
+//        googleEmail.sendEmail();
 
 
-        //Creational.Builder
+        //Builder
 //        User user1=new User.UserBuilder("Saraswati").setAge(26).setEmail("123%fdgrt").setPhone("54735874").build();
 //        user1.display();
     }
