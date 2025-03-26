@@ -9,6 +9,10 @@ import Creational.Singleton.SingletonDouble;
 import Creational.Singleton.SingletonEager;
 import Creational.Singleton.SingletonLazy;
 import Creational.Singleton.SingletonSync;
+import Structural.Adapter.Adapter;
+import Structural.Adapter.PaymentProcessor;
+import Structural.Adapter.Paypal;
+import Structural.Adapter.RazorPay;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,18 +51,26 @@ public class Main {
 //        user1.display();
 
         //Observer
-        Subject s1=new Subject();
+//        Subject s1=new Subject();
+//
+//        Observer o1=new User("Alice");
+//        Observer o2=new User("Bob");
+//
+//        s1.addObserver(o1);
+//        s1.addObserver(o2);
+//
+//        s1.notifyObserver("New Video Uploaded");
+//
+//        s1.removeObserver(o2);
+//
+//        s1.notifyObserver("Again new Song");
 
-        Observer o1=new User("Alice");
-        Observer o2=new User("Bob");
+        //Adapter
+        PaymentProcessor paypal=new Paypal();
+        paypal.makePayment(10000000);
 
-        s1.addObserver(o1);
-        s1.addObserver(o2);
-
-        s1.notifyObserver("New Video Uploaded");
-
-        s1.removeObserver(o2);
-
-        s1.notifyObserver("Again new Song");
+        RazorPay razor=new RazorPay();
+        PaymentProcessor razorAdapter=new Adapter(razor);
+        razorAdapter.makePayment(120000);
     }
 }
