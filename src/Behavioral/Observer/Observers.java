@@ -1,5 +1,5 @@
 package Behavioral.Observer;
 
-public interface Observer {
+public interface Observers {
     void update(String update);
 }

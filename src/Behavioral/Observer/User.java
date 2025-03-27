@@ -1,6 +1,6 @@
 package Behavioral.Observer;
 
-public class User implements Observer{
+public class User implements Observers{
     String userName;
 
     public User(String userName){

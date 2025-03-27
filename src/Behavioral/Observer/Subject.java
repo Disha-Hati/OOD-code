@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Subject {
-    private List<Observer> observers=new ArrayList<Observer>();
+    private List<Observers> observers=new ArrayList<Observers>();
 
-    public void addObserver(Observer observer){
+    public void addObserver(Observers observer){
         observers.add(observer);
     }
 
-    public void removeObserver(Observer observer){
+    public void removeObserver(Observers observer){
         observers.remove(observer);
     }
 
     public void notifyObserver(String message){
-        for(Observer obs:observers){
+        for(Observers obs:observers){
             obs.update(message);
         }
     }

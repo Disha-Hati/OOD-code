@@ -1,18 +1,9 @@
-import Behavioral.Observer.Observer;
+import Behavioral.Observer.Observers;
 import Behavioral.Observer.Subject;
 import Behavioral.Observer.User;
-import Creational.AbstractFactory.EmailNotification;
-import Creational.AbstractFactory.GoogleNotificatonFactory;
-import Creational.AbstractFactory.NotificationFactory;
-import Creational.FactoryMethod.Notification;
-import Creational.Singleton.SingletonDouble;
-import Creational.Singleton.SingletonEager;
-import Creational.Singleton.SingletonLazy;
-import Creational.Singleton.SingletonSync;
-import Structural.Adapter.Adapter;
-import Structural.Adapter.PaymentProcessor;
-import Structural.Adapter.Paypal;
-import Structural.Adapter.RazorPay;
+import Behavioral.Strategy.CreditPayment;
+import Behavioral.Strategy.PaymentContext;
+import Behavioral.Strategy.UPIPayment;
 
 public class Main {
     public static void main(String[] args) {
@@ -53,8 +44,8 @@ public class Main {
         //Observer
 //        Subject s1=new Subject();
 //
-//        Observer o1=new User("Alice");
-//        Observer o2=new User("Bob");
+//        Observers o1=new User("Alice");
+//        Observers o2=new User("Bob");
 //
 //        s1.addObserver(o1);
 //        s1.addObserver(o2);
@@ -66,11 +57,19 @@ public class Main {
 //        s1.notifyObserver("Again new Song");
 
         //Adapter
-        PaymentProcessor paypal=new Paypal();
-        paypal.makePayment(10000000);
+//        PaymentProcessor paypal=new Paypal();
+//        paypal.makePayment(10000000);
+//
+//        RazorPay razor=new RazorPay();
+//        PaymentProcessor razorAdapter=new Adapter(razor);
+//        razorAdapter.makePayment(120000);
 
-        RazorPay razor=new RazorPay();
-        PaymentProcessor razorAdapter=new Adapter(razor);
-        razorAdapter.makePayment(120000);
+        //Strategy
+        PaymentContext paymentType=new PaymentContext();
+        paymentType.setPaymentContext(new CreditPayment(123));
+        paymentType.executePayment(10000);
+
+        paymentType.setPaymentContext(new UPIPayment(567));
+        paymentType.executePayment(888000);
     }
 }
